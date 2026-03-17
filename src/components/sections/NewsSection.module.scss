@@ -84,6 +84,8 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  // 가로 스크롤 오버스크롤 방지
+  overscroll-behavior-x: contain;
 }
 
 .cardList {
@@ -268,12 +270,27 @@
     padding: 72px 0 60px;
   }
 
+  // BusinessSection과 동일한 패턴: 80px 데스크톱 패딩 → 0으로 해제
+  // cardTrack의 padding이 좌우 여백 담당
+  .inner {
+    padding: 0;
+  }
+
   .header {
     margin-bottom: 40px;
+    padding: 0 $container-padding-mobile;
   }
 
   .cardTrack {
     padding: 0 $container-padding-mobile;
+    // 카드 경계에서 스냅
+    scroll-snap-type: x mandatory;
+  }
+  .cardItem {
+    // 다음 카드가 살짝 보이는 peek 효과 (컨테이너 - 좌우 패딩 - 우측 peek 여백)
+    flex: 0 0 calc(100% - 48px);
+    min-width: unset;
+    scroll-snap-align: start;
   }
 
   .card {
@@ -283,6 +300,7 @@
 
   .moreWrap {
     margin-top: 36px;
+    padding: 0 $container-padding-mobile;
   }
 }
 

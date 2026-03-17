@@ -295,6 +295,7 @@
   height: 6px;
   border-radius: 50%;
   background: rgba(17, 17, 17, 0.15);
+  cursor: pointer;
   transition:
     width 350ms ease,
     border-radius 350ms ease,
@@ -358,6 +359,11 @@
 @media (max-width: $breakpoint-mobile) {
   .section {
     height: auto;
+  }
+
+  .inner {
+    height: auto;
+    padding: 0;
   }
 
   .sticky {

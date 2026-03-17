@@ -86,6 +86,8 @@ const cardTransition = { duration: 0.75, ease: [0.4, 0, 0.2, 1] as const };
 export default function BusinessSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
 
   // 스크롤 이벤트 → activeIndex 계산
   useEffect(() => {
@@ -110,6 +112,24 @@ export default function BusinessSection() {
     return () => window.removeEventListener('scroll', update);
   }, []);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const dx = touchStartX.current - e.changedTouches[0].clientX;
+    const dy = touchStartY.current - e.changedTouches[0].clientY;
+    // 수평 스와이프 (최소 40px, 수직보다 수평이 더 클 때)
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx > 0) {
+        setActive((prev) => Math.min(prev + 1, BUSINESSES.length - 1)); // 왼쪽 스와이프 → 다음
+      } else {
+        setActive((prev) => Math.max(prev - 1, 0)); // 오른쪽 스와이프 → 이전
+      }
+    }
+  };
+
   const biz = BUSINESSES[active];
 
   return (
@@ -126,8 +146,12 @@ export default function BusinessSection() {
         <div className={styles.sticky}>
           {/* ── 메인 콘텐츠: 카드 + 텍스트 ── */}
           <div className={styles.contentRow}>
-            {/* 카드 영역 — absolute 배치 */}
-            <div className={styles.cardsArea}>
+            {/* 카드 영역 — absolute 배치 (모바일: 터치 스와이프로 전환) */}
+            <div
+              className={styles.cardsArea}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               {BUSINESSES.map((b, idx) => {
                 const pos = POSITIONS[active][idx];
                 const isHero = idx === active;
@@ -237,6 +261,7 @@ export default function BusinessSection() {
                     ]
                       .filter(Boolean)
                       .join(' ')}
+                    onClick={() => setActive(idx)}
                   />
                 ))}
               </div>
