@@ -1,0 +1,324 @@
+@use '../../../styles/variables' as *;
+
+// ── 오버레이 ──
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.18s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ── 모달 패널 ──
+
+.modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 800px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.18),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+  animation: slideUp 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// ── 모달 헤더 ──
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 36px 40px 0;
+  flex-shrink: 0;
+}
+
+.modalEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.modalTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.05);
+  color: $text-secondary;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+  margin-top: 4px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: $text-primary;
+  }
+}
+
+// ── 모달 바디 ──
+
+.modalBody {
+  padding: 28px 40px 36px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+// ── 폼 ──
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.req {
+  color: $text-secondary;
+  font-weight: 400;
+}
+
+.input {
+  padding: 10px 14px;
+  border: 1.5px solid $border-default;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: $font-sans;
+  color: $text-primary;
+  transition: border-color 0.15s;
+  outline: none;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.28);
+  }
+
+  &:focus {
+    border-color: #111;
+  }
+}
+
+.textarea {
+  padding: 10px 14px;
+  border: 1.5px solid $border-default;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: $font-sans;
+  color: $text-primary;
+  resize: vertical;
+  transition: border-color 0.15s;
+  outline: none;
+  line-height: 1.7;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.28);
+  }
+
+  &:focus {
+    border-color: #111;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.cancelBtn {
+  background: transparent;
+  color: $text-secondary;
+  border: 1.5px solid $border-default;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-family: $font-sans;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+
+  &:hover:not(:disabled) {
+    border-color: rgba(0, 0, 0, 0.35);
+    color: $text-primary;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+  }
+}
+
+.submitBtn {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: $font-sans;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) {
+    background: #333;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.errorMsg {
+  background: #f5f5f5;
+  color: $text-primary;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 13px;
+}
+
+// ── 성공 화면 ──
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0 8px;
+  gap: 12px;
+}
+
+.successMark {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.successSub {
+  font-size: 14px;
+  color: $text-secondary;
+  line-height: 1.7;
+}
+
+.closeAfterSuccess {
+  margin-top: 8px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: $font-sans;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: #333;
+  }
+}
+
+// ── 반응형 ──
+
+@media (max-width: 600px) {
+  .overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal {
+    border-radius: 20px 20px 0 0;
+    max-height: 90vh;
+  }
+
+  .modalHeader {
+    padding: 28px 24px 0;
+  }
+
+  .modalBody {
+    padding: 24px 24px 32px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancelBtn,
+  .submitBtn {
+    width: 100%;
+    text-align: center;
+  }
+}

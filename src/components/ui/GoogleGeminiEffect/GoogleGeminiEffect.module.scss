@@ -1,0 +1,19 @@
+// ══════════════════════════════════════════
+//  GoogleGeminiEffect — 스크롤 드리븐 SVG 패스
+// ══════════════════════════════════════════
+
+.wrapper {
+  // stickyWrapper 내부를 완전히 덮는 절대 레이어
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.svg {
+  // 뷰포트 전체 채움
+  // preserveAspectRatio="none" (속성으로 설정) — 경로가 화면 전체를 커버
+  display: block;
+  width: 100%;
+  height: 100%;
+}

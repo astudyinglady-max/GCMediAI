@@ -1,0 +1,80 @@
+@use '../styles/variables' as *;
+
+.main {
+  padding-top: 72px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  text-align: center;
+  padding: 48px 24px;
+  max-width: 480px;
+}
+
+.code {
+  font-size: 96px;
+  font-weight: 900;
+  color: $color-primary;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.15;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.desc {
+  font-size: 15px;
+  color: $text-secondary;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retryBtn {
+  background: $color-ui;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: $font-sans;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $color-ui-hover;
+  }
+}
+
+.homeLink {
+  display: inline-block;
+  background: transparent;
+  color: $text-primary;
+  border: 1px solid $border-default;
+  border-radius: 8px;
+  padding: 13px 28px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+  }
+}

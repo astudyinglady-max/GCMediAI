@@ -1,0 +1,108 @@
+@use '../../styles/variables' as *;
+
+// ════════════════════════════════
+//  히어로 섹션 — 이미지/영상 플레이스홀더 (100vh)
+// ════════════════════════════════
+
+.heroSection {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+// ── 텍스트 콘텐츠 ──
+
+.heroInner {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: $color-secondary;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.heading {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 900;
+  color: $text-primary;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+
+.headingAccent {
+  color: $color-primary;
+  font-style: normal;
+}
+
+.sub {
+  font-size: 16px;
+  color: $text-disabled;
+  line-height: 1.75;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ── 스크롤 힌트 ──
+
+.scrollHint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.scrollBar {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, $color-primary, transparent);
+  animation: scrollBarPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollBarPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+// ── 반응형 ──
+
+@media (max-width: 768px) {
+  .heroInner {
+    padding: 0 20px;
+  }
+}
+
+// ── prefers-reduced-motion ──
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollBar {
+    animation: none;
+  }
+}

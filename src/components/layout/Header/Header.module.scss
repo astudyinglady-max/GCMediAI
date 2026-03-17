@@ -1,0 +1,161 @@
+@use '../../../styles/variables' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: transparent;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.headerScrolled {
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+}
+
+.headerTransparent {
+  background: transparent;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: block;
+  width: 140px;
+  height: 30px;
+  font-size: 0;
+  letter-spacing: -0.02em;
+  color: transparent;
+  text-decoration: none;
+  background-image: url('/images/GCMediAI_blue.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.logoAccent {
+  color: $color-primary;
+}
+
+.gnb {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.gnbLink {
+  font-size: 13px;
+  color: $text-secondary;
+  text-decoration: none;
+  transition: color 0.15s;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.gnbLinkActive {
+  color: $color-primary;
+  font-weight: 600;
+}
+
+.cta {
+  background: $color-primary;
+  color: #fff;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $color-primary-dark;
+    color: #fff;
+  }
+}
+
+// ── 햄버거 버튼 ──
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: $text-primary;
+    border-radius: 2px;
+    transition: opacity 0.15s;
+  }
+}
+
+// ── 모바일 드로어 ──
+
+.drawer {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  background: #fff;
+  border-top: 1px solid $border-default;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.25s ease;
+
+  .gnbLink,
+  .cta {
+    display: block;
+    padding: 14px 24px;
+    font-size: 15px;
+    border-bottom: 1px solid $border-default;
+    text-decoration: none;
+  }
+
+  .cta {
+    background: none;
+    color: $color-primary;
+    border-radius: 0;
+    font-weight: 700;
+  }
+}
+
+.drawerOpen {
+  max-height: 400px;
+}
+
+// ── 반응형 ──
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 16px 24px;
+  }
+
+  .gnb {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .drawer {
+    display: flex;
+  }
+}

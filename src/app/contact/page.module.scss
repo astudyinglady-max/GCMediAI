@@ -1,0 +1,229 @@
+@use '../../styles/variables' as *;
+
+.main {
+  padding-top: 72px;
+  padding-bottom: 80px;
+}
+
+.hero {
+  background: #f7f3ee;
+  padding: 80px 48px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+
+.sub {
+  font-size: 16px;
+  color: $text-secondary;
+  line-height: 1.75;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 48px 0 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.infoValue {
+  font-size: 15px;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.infoNote {
+  font-size: 12px;
+  color: $text-secondary;
+}
+
+.formSection {
+  padding: 48px 0;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.required {
+  color: $text-secondary;
+}
+
+.input {
+  padding: 11px 14px;
+  border: 1px solid $border-default;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: $font-sans;
+  color: $text-primary;
+  transition: border-color 0.15s;
+  outline: none;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  &:focus {
+    border-color: $color-ui;
+  }
+}
+
+.textarea {
+  padding: 11px 14px;
+  border: 1px solid $border-default;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: $font-sans;
+  color: $text-primary;
+  resize: vertical;
+  transition: border-color 0.15s;
+  outline: none;
+  line-height: 1.7;
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  &:focus {
+    border-color: $color-ui;
+  }
+}
+
+.submitBtn {
+  align-self: flex-start;
+  background: $color-ui;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: $font-sans;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) {
+    background: $color-ui-hover;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.errorMsg {
+  background: #f5f5f5;
+  color: $text-primary;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+}
+
+.successBox {
+  text-align: center;
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.successIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successMsg {
+  font-size: 15px;
+  color: $text-primary;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 24px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

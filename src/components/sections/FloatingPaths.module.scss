@@ -1,0 +1,28 @@
+// 히어로 섹션 배경 — FloatingPaths
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  // 패스 색상: 브랜드 컬러를 currentColor로 상속
+  color: #0f172a; // slate-900 — 흰 배경 위 미묘한 dark path
+}
+
+.pathsWrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pathsSvg {
+  width: 100%;
+  height: 100%;
+}
+
+// prefers-reduced-motion: 모든 path 애니메이션 중지
+@media (prefers-reduced-motion: reduce) {
+  .bg {
+    display: none;
+  }
+}

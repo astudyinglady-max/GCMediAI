@@ -1,0 +1,402 @@
+@use '../../styles/variables' as *;
+
+// ══════════════════════════════════════════
+//  BusinessSection — 스크롤 드리븐 사업분야
+//  4개 카드 동시 표시, 활성 카드가 HERO 자리를 순환
+// ══════════════════════════════════════════
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+// ══════════════════════════════════════════
+//  섹션 — sticky 스크롤 공간 확보 (500vh)
+//  sticky 100vh + 스크롤 여행 400vh (사업 4개 × 100vh)
+// ══════════════════════════════════════════
+
+.section {
+  background: #ffffff;
+}
+
+.inner {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+  height: 500vh;
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+// ── 섹션 헤더 ──
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px $container-padding-desktop 0;
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.headerEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $color-primary;
+}
+
+.headerTitle {
+  font-size: 26px;
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+}
+
+.headerLink {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(17, 17, 17, 0.35);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+// ══════════════════════════════════════════
+//  티커
+// ══════════════════════════════════════════
+
+.ticker {
+  overflow: hidden;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(17, 17, 17, 0.07);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.07);
+  padding: 4px 0;
+}
+
+.tickerTrack {
+  display: inline-flex;
+  white-space: nowrap;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 900;
+  color: rgba(17, 17, 17, 0.08);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  animation: tickerScroll 120s linear infinite;
+
+  span {
+    display: inline-block;
+  }
+}
+
+// ══════════════════════════════════════════
+//  메인 콘텐츠 — 카드 영역 + 텍스트 패널
+// ══════════════════════════════════════════
+
+.contentRow {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 100px 0 24px;
+  min-height: 0;
+}
+
+// ── 카드 영역: 상대 위치 기준으로 4개 카드가 absolute 배치 ──
+
+.cardsArea {
+  flex: 0 0 65%;
+  position: relative;
+  // 카드들이 % 기반 top/left/width/height로 배치되므로 부모 높이 필요
+  height: 100%;
+}
+
+// 개별 카드 — framer-motion이 left/top/width/height를 animate
+.card {
+  position: absolute;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  // framer-motion이 transition 처리하므로 CSS transition 불필요
+}
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.15) 45%,
+    transparent 75%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+// 카드 번호 배지
+.cardNum {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  z-index: 3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+// HERO 카드의 번호: 더 크고 밝게
+.cardNumHero {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+// HERO 카드 내 타이틀 블록
+.cardHeroContent {
+  position: absolute;
+  bottom: 28px;
+  left: 24px;
+  z-index: 3;
+}
+
+.cardHeroTitle {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(32px, 3.8vw, 56px);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.cardHeroTitleLine {
+  display: block;
+}
+
+// ══════════════════════════════════════════
+//  텍스트 패널 (우측)
+// ══════════════════════════════════════════
+
+.textPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 0 52px;
+  position: relative;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.textCounter {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(17, 17, 17, 0.35);
+
+  strong {
+    font-weight: 800;
+    color: $color-primary;
+  }
+}
+
+.textEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-secondary;
+}
+
+.textTitle {
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 900;
+  color: $text-primary;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.textTitleLine {
+  display: block;
+}
+
+.textDesc {
+  font-size: 15px;
+  color: $text-secondary;
+  line-height: 1.75;
+  max-width: 320px;
+  margin-top: 4px;
+}
+
+.textCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: $text-primary;
+  text-decoration: none;
+  transition: gap $transition-base;
+
+  &:hover {
+    gap: 14px;
+
+    .ctaArrow {
+      color: $color-primary;
+    }
+  }
+}
+
+.ctaArrow {
+  font-size: 16px;
+  transition: color $transition-base;
+}
+
+// ── 단계 인디케이터 (우측 패널 하단) ──
+
+.stepIndicator {
+  display: flex;
+  gap: 6px;
+  margin-top: 40px;
+}
+
+.step {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(17, 17, 17, 0.15);
+  transition:
+    width 350ms ease,
+    border-radius 350ms ease,
+    background 350ms ease;
+}
+
+.stepActive {
+  width: 24px;
+  border-radius: 3px;
+  background: $color-primary;
+}
+
+// ══════════════════════════════════════════
+//  카드 배경 — 사업별 고유 그라디언트
+// ══════════════════════════════════════════
+
+.bgAi {
+  background:
+    radial-gradient(ellipse at 65% 25%, #1a3a70 0%, transparent 55%),
+    linear-gradient(160deg, #071628 0%, #0e2a52 60%, #071020 100%);
+}
+
+.bgData {
+  background:
+    radial-gradient(ellipse at 65% 25%, #1a4a20 0%, transparent 55%),
+    linear-gradient(160deg, #071408 0%, #0e3012 60%, #050e05 100%);
+}
+
+.bgEmr {
+  background:
+    radial-gradient(ellipse at 65% 25%, #6a2400 0%, transparent 55%),
+    linear-gradient(160deg, #1a0800 0%, #4a1800 60%, #0e0400 100%);
+}
+
+.bgMos {
+  background:
+    radial-gradient(ellipse at 65% 25%, #3a0090 0%, transparent 55%),
+    linear-gradient(160deg, #0a0020 0%, #28006a 60%, #080015 100%);
+}
+
+// ══════════════════════════════════════════
+//  반응형
+// ══════════════════════════════════════════
+
+@media (min-width: $breakpoint-tablet) and (max-width: 1199px) {
+  .header {
+    padding: 24px $container-padding-tablet 0;
+  }
+
+  .contentRow {
+    padding: 12px $container-padding-tablet 20px;
+    gap: 0;
+  }
+
+  .textPanel {
+    padding-left: 36px;
+  }
+}
+
+// 모바일: sticky 해제, 단순 세로 스택
+@media (max-width: $breakpoint-mobile) {
+  .section {
+    height: auto;
+  }
+
+  .sticky {
+    position: static;
+    height: auto;
+  }
+
+  .header {
+    padding: 40px $container-padding-mobile 0;
+  }
+
+  .tickerTrack {
+    font-size: 40px;
+  }
+
+  .contentRow {
+    flex-direction: column;
+    padding: 12px $container-padding-mobile 24px;
+    gap: 20px;
+  }
+
+  .cardsArea {
+    flex: none;
+    height: 320px;
+    width: 100%;
+  }
+
+  .textPanel {
+    padding: 0;
+  }
+
+  .stepIndicator {
+    margin-top: 24px;
+  }
+}
+
+// prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  .tickerTrack {
+    animation: none;
+  }
+}

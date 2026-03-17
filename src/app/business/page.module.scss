@@ -1,0 +1,147 @@
+@use '../../styles/variables' as *;
+
+.main {
+  padding-top: 72px;
+}
+
+.hero {
+  background: #f7f3ee;
+  padding: 80px 48px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+
+.sub {
+  font-size: 16px;
+  color: $text-secondary;
+  line-height: 1.75;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.areaSection {
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.areaSectionAlt {
+  background: #f7f3ee;
+}
+
+.areaHeader {
+  margin-bottom: 40px;
+}
+
+.areaName {
+  font-size: 28px;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 24px;
+    background: $color-ui;
+    border-radius: 3px;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+}
+
+.areaDesc {
+  font-size: 15px;
+  color: $text-secondary;
+  line-height: 1.8;
+  max-width: 680px;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.serviceCard {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 28px;
+}
+
+.serviceName {
+  font-size: 16px;
+  font-weight: 700;
+  color: $text-primary;
+  margin-bottom: 8px;
+}
+
+.serviceDesc {
+  font-size: 13px;
+  color: $text-secondary;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.featureList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.featureItem {
+  font-size: 12px;
+  color: $text-secondary;
+  padding-left: 14px;
+  position: relative;
+
+  &::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: $text-secondary;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 24px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,119 @@
+@use '../../../styles/variables' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+// ── 트리거 ──
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1.5px solid $border-default;
+  border-radius: 8px;
+  font-family: $font-sans;
+  font-size: 14px;
+  color: $text-primary;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  text-align: left;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.35);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-ui;
+    outline-offset: 2px;
+  }
+}
+
+.triggerOpen {
+  border-color: $color-ui;
+}
+
+.placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.selectedLabel {
+  color: $text-primary;
+}
+
+.arrow {
+  flex-shrink: 0;
+  color: $text-secondary;
+  transition: transform 0.2s;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+// ── 옵션 리스트 ──
+
+.list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: #fff;
+  border: 1.5px solid $color-ui;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  list-style: none;
+  padding: 4px 0;
+  animation: dropIn 0.12s ease;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ── 개별 옵션 ──
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: $text-primary;
+  cursor: pointer;
+  transition: background 0.1s;
+
+  &:hover {
+    background: $color-ui-tint;
+  }
+}
+
+.optionSelected {
+  font-weight: 600;
+  color: $color-ui;
+}
+
+.optionCheck {
+  flex-shrink: 0;
+  color: $color-ui;
+}

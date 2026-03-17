@@ -1,0 +1,85 @@
+@use '../../../styles/variables' as *;
+
+// ── 기본 ──
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: 8px;
+  font-family: $font-sans;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s,
+    opacity 0.15s;
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+// ── 사이즈 ──
+
+.sm {
+  font-size: 12px;
+  padding: 7px 14px;
+  border-radius: 6px;
+}
+
+.md {
+  font-size: 14px;
+  padding: 11px 22px;
+}
+
+.lg {
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 10px;
+}
+
+// ── 변형 ──
+
+.solid {
+  background: $color-ui;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: $color-ui-hover;
+  }
+
+  &:active:not(:disabled) {
+    background: #000;
+  }
+}
+
+.outline {
+  background: transparent;
+  color: $color-ui;
+  border: 1.5px solid $color-ui;
+
+  &:hover:not(:disabled) {
+    background: $color-ui-tint;
+  }
+
+  &:active:not(:disabled) {
+    background: rgba(17, 17, 17, 0.1);
+  }
+}
+
+.ghost {
+  background: $color-surface;
+  color: $color-ui;
+  border: 1.5px solid $border-default;
+
+  &:hover:not(:disabled) {
+    border-color: $color-ui;
+  }
+}

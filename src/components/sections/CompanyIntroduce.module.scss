@@ -1,0 +1,285 @@
+@use '../../styles/variables' as *;
+
+// ══════════════════════════════════════════
+//  CompanyIntroduce — 350vh 스크롤 시퀀스
+// ══════════════════════════════════════════
+
+// ── 섹션 외부 컨테이너: 350vh — 스크롤 여행 250vh 확보 ──
+
+.section {
+  position: relative;
+  height: 350vh;
+  width: 100%;
+}
+
+// ── sticky 뷰포트: p=0 ~ p=1 동안 화면 고정 ──
+
+.stickyWrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #060c1a;
+
+  // 히어로와의 연결 — 상단 그라디언트 구분선
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      $color-primary 30%,
+      $color-accent 70%,
+      transparent 100%
+    );
+    z-index: 3;
+  }
+}
+
+// ── 배경 레이어 ──
+
+.bgDots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgGlowOrange {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(
+    circle,
+    rgba(241, 60, 5, 0.09) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgGlowBlue {
+  position: absolute;
+  bottom: -120px;
+  left: -80px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(
+    circle,
+    rgba(30, 107, 255, 0.07) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+// ── 내부 레이아웃 (GoogleGeminiEffect z-index: 1 보다 위) ──
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 120px $container-padding-desktop;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+// ── 왼쪽 컬럼 ──
+
+.leftCol {
+  padding-right: 64px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-primary;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  &::before {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: 20px;
+    height: 1px;
+    background: $color-primary;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: clamp(38px, 4.5vw, 66px);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+}
+
+.titleLine1 {
+  color: rgba(255, 255, 255, 0.28);
+  display: block;
+}
+
+.titleLine2 {
+  color: rgba(255, 255, 255, 0.62);
+  display: block;
+}
+
+.titleLine3 {
+  color: $color-primary;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, $color-primary, $color-accent);
+  }
+}
+
+// ── 오른쪽 컬럼 ──
+
+.rightCol {
+  padding-left: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.subTitle {
+  font-size: clamp(20px, 2vw, 27px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.45;
+  letter-spacing: -0.025em;
+}
+
+.body {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.44);
+  line-height: 1.9;
+}
+
+// ── CTA 링크 ──
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 340px;
+  width: 100%;
+  transition:
+    color 250ms ease,
+    gap 250ms ease,
+    border-color 250ms ease;
+
+  &:hover {
+    color: #ffffff;
+    gap: 18px;
+    border-color: rgba(241, 60, 5, 0.35);
+  }
+}
+
+.ctaText {
+  flex: 1;
+}
+
+.ctaArrow {
+  color: $color-primary;
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 250ms ease;
+
+  .cta:hover & {
+    transform: translateX(5px);
+  }
+}
+
+// ── 반응형 ──
+
+@media (max-width: $breakpoint-mobile) {
+  .section {
+    // 모바일: 스크롤 여행 줄임 (200vh)
+    height: 200vh;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    padding: 80px $container-padding-mobile;
+    align-content: center;
+  }
+
+  .leftCol {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+  }
+
+  .rightCol {
+    padding-left: 0;
+  }
+
+  .cta {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) and (max-width: 1199px) {
+  .inner {
+    padding: 80px $container-padding-tablet;
+  }
+}
+
+// ── prefers-reduced-motion ──
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: 100vh;
+  }
+
+  .stickyWrapper {
+    position: relative;
+  }
+}

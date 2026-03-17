@@ -1,0 +1,79 @@
+@use '../../../../styles/variables' as *;
+
+.main {
+  padding-top: 72px;
+  padding-bottom: 80px;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 48px 0;
+}
+
+.back {
+  display: inline-block;
+  font-size: 13px;
+  color: $text-secondary;
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 0.15s;
+
+  &:hover {
+    color: $color-ui;
+  }
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.category {
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.date {
+  font-size: 13px;
+  color: $text-secondary;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.para {
+  font-size: 15px;
+  color: $text-primary;
+  line-height: 1.9;
+  word-break: keep-all;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 32px 24px 0;
+  }
+}

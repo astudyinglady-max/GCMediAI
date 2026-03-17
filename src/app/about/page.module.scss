@@ -1,0 +1,324 @@
+@use '../../styles/variables' as *;
+
+.main {
+  padding-top: 72px;
+}
+
+// ══════════════════════════════════════════
+//  히어로
+// ══════════════════════════════════════════
+
+.hero {
+  background: #f7f3ee;
+  padding: 80px 48px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+
+.sub {
+  font-size: 16px;
+  color: $text-secondary;
+  line-height: 1.75;
+}
+
+// ══════════════════════════════════════════
+//  공통 컨테이너
+// ══════════════════════════════════════════
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+// ══════════════════════════════════════════
+//  기업 소개
+// ══════════════════════════════════════════
+
+.narrative {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+
+.para {
+  font-size: 15px;
+  color: $text-secondary;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+// ══════════════════════════════════════════
+//  주요 지표 — 연한 베이지 배경
+// ══════════════════════════════════════════
+
+.stats {
+  background: #f7f3ee;
+  padding: 60px 0;
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 16px;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.statNumber {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: $text-secondary;
+}
+
+// ══════════════════════════════════════════
+//  연혁 — 대형 연도 표시
+// ══════════════════════════════════════════
+
+.history {
+  background: #ffffff;
+  padding: 100px $container-padding-desktop 120px;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+// ── 상단 헤더 ──
+
+.historyHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.historyVertLine {
+  width: 1px;
+  height: 52px;
+  background: rgba(17, 17, 17, 0.2);
+  margin: 0 auto 24px;
+}
+
+.historyEyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: $text-secondary;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.historyDesc {
+  font-size: 24px;
+  color: $text-secondary;
+  line-height: 1.75;
+  margin: 0 auto;
+}
+
+// ── 대형 연도 + 가로선 ──
+
+.historyYears {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 64px;
+}
+
+.historyYearStart,
+.historyYearEnd {
+  font-size: clamp(72px, 12vw, 160px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.historyLine {
+  flex: 1;
+  height: 3px;
+  background: $text-primary;
+  margin: 0 16px;
+  // 선 끝에 작은 원
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $text-primary;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+}
+
+// ── 마일스톤 도트 라인 ──
+
+.historyMilestoneWrap {
+  position: relative;
+  height: 100px;
+}
+
+.historyMilestoneLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(17, 17, 17, 0.12);
+}
+
+.historyMilestone {
+  position: absolute;
+  top: -3px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  // 첫 번째(left:0) 와 마지막(left:100%) 은 넘치지 않도록
+  &:first-child {
+    transform: translateX(0);
+    align-items: flex-start;
+  }
+
+  &:last-child {
+    transform: translateX(-100%);
+    align-items: flex-end;
+  }
+}
+
+.milestoneDot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $color-primary;
+  flex-shrink: 0;
+}
+
+.milestoneYear {
+  font-size: 12px;
+  font-weight: 700;
+  color: $text-primary;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.milestoneLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: $text-secondary;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+
+  .historyMilestone:first-child & {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .historyMilestone:last-child & {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+// ══════════════════════════════════════════
+//  반응형
+// ══════════════════════════════════════════
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 24px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .statGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statItem {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+    &:nth-child(2n) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    &:nth-last-child(-n + 2) {
+      border-bottom: none;
+    }
+  }
+
+  .history {
+    padding: 72px 24px 80px;
+  }
+
+  .historyYears {
+    margin-bottom: 48px;
+  }
+
+  // 모바일: 마일스톤 텍스트 간소화 (겹침 방지)
+  .historyMilestone {
+    // 중간 마일스톤 숨김 — 시작/끝만 표시
+    &:not(:first-child):not(:last-child) {
+      display: none;
+    }
+  }
+}
