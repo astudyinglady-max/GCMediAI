@@ -1,0 +1,25 @@
+# 의존성
+node_modules/
+.pnpm-store/
+
+# 빌드 결과물
+.next/
+out/
+dist/
+
+# 환경 변수
+.env
+.env.local
+.env.*.local
+
+# 캐시
+.cache/
+*.tsbuildinfo
+
+# 에디터
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

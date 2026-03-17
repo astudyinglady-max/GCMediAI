@@ -1,10 +1,18 @@
+import Spline from '@splinetool/react-spline/next';
 import styles from './HeroSection.module.scss';
 
-// 이미지/영상 삽입이 용이한 100vh 플레이스홀더
+// Spline 3D 영상 배경 + 텍스트 오버레이
 export default function HeroSection() {
   return (
     <section className={styles.heroSection}>
-      {/* 향후 이미지/영상 콘텐츠 영역 */}
+      {/* 영상 배경 */}
+      <div className={styles.videoBg} aria-hidden="true">
+        <Spline scene="https://prod.spline.design/9pggRz28QREByu5x/scene.splinecode" />
+      </div>
+
+      {/* 어두운 오버레이 — 텍스트 가독성 확보 */}
+      <div className={styles.overlay} aria-hidden="true" />
+
       <div className={styles.heroInner}>
         <p className={styles.eyebrow}>GC MediAI · Medical OS Platform</p>
 

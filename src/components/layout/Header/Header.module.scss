@@ -13,12 +13,31 @@
 }
 
 .headerScrolled {
-  background: #fff;
+  background:rgba(255,255,255,0.9);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .headerTransparent {
   background: transparent;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  .logo{
+    background-image: url('/images/GCMediAI_white.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+  .gnbLink {
+    color: #fff;
+  }
+  .hamburger{
+    span{
+      background: #fff;
+    }
+  }
+  .drawer{
+    border-color: #191919;
+    background-color:#111111;
+  }
 }
 
 .inner {
@@ -113,7 +132,7 @@
   display: none;
   flex-direction: column;
   gap: 0;
-  background: #fff;
+  background:rgba(255,255,255,0.9);
   border-top: 1px solid $border-default;
   overflow: hidden;
   max-height: 0;
@@ -133,6 +152,10 @@
     color: $color-primary;
     border-radius: 0;
     font-weight: 700;
+  }
+  .drawerCta{
+    padding:12px;
+    margin:16px 24px;
   }
 }
 
