@@ -15,7 +15,7 @@ export default function Footer() {
           </div>
 
           <div className={styles.familySite}>
-            <span className={styles.familyLabel}>패밀리사이트</span>
+            <span classN1ame={styles.familyLabel}>패밀리사이트</span>
             <a
               href="https://www.greencross.com"
               target="_blank"
