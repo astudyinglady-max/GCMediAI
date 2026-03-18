@@ -1,0 +1,82 @@
+@use '../../../styles/variables' as *;
+
+// 입력 필드 래퍼 — clearBtn의 position 기준
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+// 실제 input 요소
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid $border-default;
+  border-radius: $radius-md;
+  font-size: $text-body;
+  font-family: $font-sans;
+  color: $text-primary;
+  background: $color-surface;
+  outline: none;
+  transition:
+    border-color $transition-base,
+    box-shadow $transition-base;
+
+  &::placeholder {
+    color: $text-disabled;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $border-strong;
+  }
+
+  &:focus {
+    border-color: $color-ui;
+    box-shadow: 0 0 0 3px rgba(28, 47, 85, 0.08);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: rgba(17, 17, 17, 0.03);
+  }
+}
+
+// clearBtn 공간 확보 — 버튼 너비(28px) + 여유 4px
+.inputWithClear {
+  padding-right: 36px;
+}
+
+// X 초기화 버튼
+.clearBtn {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-full;
+  border: none;
+  background: rgba(17, 17, 17, 0.1);
+  color: $text-secondary;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background $transition-fast,
+    color $transition-fast;
+
+  &:hover {
+    background: rgba(17, 17, 17, 0.18);
+    color: $text-primary;
+  }
+
+  &:active {
+    background: rgba(17, 17, 17, 0.25);
+  }
+}

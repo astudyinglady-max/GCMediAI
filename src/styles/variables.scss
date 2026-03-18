@@ -24,6 +24,17 @@ $color-ui: $color-secondary;
 $color-ui-hover: #333333;
 $color-ui-tint: rgba(17, 17, 17, 0.06);
 
+// ── 배경 — Warm Beige 계열 ──────────────────────────────────────────────────
+$color-bg-warm:       #ede9e2; // CompanyIntroduce 베이스, Footer
+$color-bg-warm-light: #f7f3ee; // About stats/pillars, Business alt, IR notice
+$color-bg-warm-soft:  #f0ede8; // About introImage, map placeholder
+
+// ── 배경 — Dark 계열 ─────────────────────────────────────────────────────────
+$color-dark-base:    #000000; // HeroSection
+$color-dark-news:    #060c1a; // NewsSection
+$color-dark-ir-card: #0b1535; // IrSection 배너 카드
+$color-dark-slate:   #0f172a; // FloatingPaths
+
 // ==========================================================================
 // 2. 컬러 — 시맨틱
 // ==========================================================================
@@ -70,21 +81,21 @@ $font-weight-bold: 700; // 제목, CTA 버튼 텍스트
 // 5. 타이포그래피 — 스케일 (데스크톱 1200px+ 기준)
 // ==========================================================================
 
-$text-h1: 56px; // line-height 1.2,  letter-spacing -0.03em, bold
-$text-h2: 40px; // line-height 1.25, letter-spacing -0.02em, bold
-$text-h3: 32px; // line-height 1.3,  letter-spacing -0.01em, semibold
-$text-h4: 24px; // line-height 1.35, letter-spacing -0.01em, semibold
-$text-h5: 20px; // line-height 1.4,  letter-spacing 0,        medium
-$text-h6: 18px; // line-height 1.4,  letter-spacing 0,        medium
-$text-body-lg: 18px; // line-height 1.7,  regular
-$text-body: 16px; // line-height 1.7,  regular
-$text-body-sm: 14px; // line-height 1.6,  regular
-$text-caption: 12px; // line-height 1.5,  letter-spacing 0.01em,  regular
-$text-overline: 12px; // line-height 1.5,  letter-spacing 0.1em,   medium
+$text-h1: 3.5rem; // line-height 1.2,  letter-spacing -0.03em, bold     (56px)
+$text-h2: 2.5rem; // line-height 1.25, letter-spacing -0.02em, bold     (40px)
+$text-h3: 2rem; // line-height 1.3,  letter-spacing -0.01em, semibold   (32px)
+$text-h4: 1.5rem; // line-height 1.35, letter-spacing -0.01em, semibold (24px)
+$text-h5: 1.25rem; // line-height 1.4,  letter-spacing 0,        medium (20px)
+$text-h6: 1.125rem; // line-height 1.4,  letter-spacing 0,        medium (18px)
+$text-body-lg: 1.125rem; // line-height 1.7,  regular                   (18px)
+$text-body: 1rem; // line-height 1.7,  regular                          (16px)
+$text-body-sm: 0.875rem; // line-height 1.6,  regular                   (14px)
+$text-caption: 0.75rem; // line-height 1.5,  letter-spacing 0.01em,  regular (12px)
+$text-overline: 0.75rem; // line-height 1.5,  letter-spacing 0.1em,   medium  (12px)
 
 // 모바일(~767px) 기준은 clamp() 또는 미디어 쿼리로 처리
-// h1→40px  h2→32px  h3→26px  h4→22px  h5→18px  h6→16px
-// body-lg→17px  body→15px  body-sm→13px  caption/overline→11px
+// h1→2.5rem  h2→2rem  h3→1.625rem  h4→1.375rem  h5→1.125rem  h6→1rem
+// body-lg→1.0625rem  body→0.9375rem  body-sm→0.8125rem  caption/overline→0.6875rem
 
 // ==========================================================================
 // 6. 간격 — 4px 기본 단위 (모든 간격은 4의 배수)
@@ -126,6 +137,7 @@ $nav-padding-mobile: $spacing-4 $container-padding-mobile; // 16px 16px
 // 8. 보더 — 반경
 // ==========================================================================
 
+$radius-xs: 6px; // 소형 UI 요소 (드롭다운 아이템 등)
 $radius-sm: 4px; // 소형 배지, 태그
 $radius-md: 8px; // 입력 필드, 소형 버튼
 $radius-lg: 12px; // 카드, 일반 버튼
@@ -166,6 +178,7 @@ $shadow-xl:
 
 $transition-fast: 100ms ease;
 $transition-base: 200ms ease;
+$transition-ui:   250ms ease; // hover 인터랙션 표준
 $transition-slow: 300ms ease;
 $transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1); // 스프링 (버튼 등)
 

@@ -10,10 +10,14 @@ export async function submitContact(
   formData: FormData,
 ): Promise<ContactState> {
   const name = formData.get('name') as string;
+  const phone = formData.get('phone') as string;
+  const organization = formData.get('organization') as string;
+  const department = formData.get('department') as string;
   const email = formData.get('email') as string;
   const message = formData.get('message') as string;
+  const inquiryType = formData.get('inquiryType') as string;
 
-  if (!name || !email || !message) {
+  if (!name || !phone || !organization || !department || !email || !message || !inquiryType) {
     return { success: false, message: '필수 항목을 모두 입력해주세요.' };
   }
 

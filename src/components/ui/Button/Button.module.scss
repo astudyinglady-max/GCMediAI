@@ -29,18 +29,18 @@
 // ── 사이즈 ──
 
 .sm {
-  font-size: 12px;
+  font-size: $text-caption;
   padding: 7px 14px;
   border-radius: 6px;
 }
 
 .md {
-  font-size: 14px;
+  font-size: $text-body;
   padding: 11px 22px;
 }
 
 .lg {
-  font-size: 15px;
+  font-size: $text-body;
   padding: 14px 28px;
   border-radius: 10px;
 }

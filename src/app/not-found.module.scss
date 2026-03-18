@@ -25,7 +25,7 @@
 }
 
 .heading {
-  font-size: 28px;
+  font-size: $text-h3;
   font-weight: 800;
   color: $text-primary;
   letter-spacing: -0.03em;
@@ -33,7 +33,7 @@
 }
 
 .desc {
-  font-size: 15px;
+  font-size: $text-body;
   color: $text-secondary;
   line-height: 1.75;
   margin-bottom: 32px;
@@ -45,7 +45,7 @@
   color: #fff;
   border-radius: 8px;
   padding: 13px 28px;
-  font-size: 14px;
+  font-size: $text-body;
   font-weight: 700;
   text-decoration: none;
   transition: background 0.15s;

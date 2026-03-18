@@ -36,6 +36,21 @@ function ModalForm({ onClose }: { onClose: () => void }) {
         <p className={styles.errorMsg}>{state.message}</p>
       )}
 
+      {/* 문의유형 */}
+      <div className={styles.typeGroup}>
+        <span className={styles.label}>
+          문의유형 <span className={styles.req}>*</span>
+        </span>
+        <div className={styles.typeBtnRow}>
+          {(['대표문의', 'IR', 'PR', '협업문의'] as const).map((type) => (
+            <label key={type} className={styles.typeBtn}>
+              <input type='radio' name='inquiryType' value={type} required />
+              {type}
+            </label>
+          ))}
+        </div>
+      </div>
+
       <div className={styles.row}>
         <label className={styles.label}>
           이름 <span className={styles.req}>*</span>

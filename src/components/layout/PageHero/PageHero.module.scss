@@ -1,0 +1,39 @@
+@use '../../../styles/variables' as *;
+
+.hero {
+  background: #ffffff;
+  padding: 40px 48px 40px;
+  text-align: left;
+  border-bottom: none;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: $text-body-sm;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.heading {
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.04em;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.sub {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 56px 24px 32px;
+  }
+}

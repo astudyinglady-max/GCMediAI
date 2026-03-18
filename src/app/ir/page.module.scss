@@ -4,36 +4,6 @@
   padding-top: 72px;
 }
 
-.hero {
-  background: #f7f3ee;
-  padding: 80px 48px;
-  text-align: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  color: $text-secondary;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.heading {
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 900;
-  color: $text-primary;
-  letter-spacing: -0.04em;
-  margin-bottom: 16px;
-}
-
-.sub {
-  font-size: 16px;
-  color: $text-secondary;
-  line-height: 1.75;
-}
-
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -50,7 +20,7 @@
 }
 
 .sectionTitle {
-  font-size: 20px;
+  font-size: $text-h5;
   font-weight: 800;
   color: $text-primary;
   letter-spacing: -0.03em;
@@ -66,12 +36,12 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: $text-body;
 
   th {
     text-align: left;
     padding: 10px 16px;
-    font-size: 12px;
+    font-size: $text-caption;
     font-weight: 600;
     color: $text-secondary;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
@@ -120,13 +90,13 @@
 }
 
 .disclosureTitle {
-  font-size: 14px;
+  font-size: $text-body;
   color: $text-primary;
   transition: color 0.15s;
 }
 
 .disclosureDate {
-  font-size: 12px;
+  font-size: $text-caption;
   color: $text-secondary;
   white-space: nowrap;
   flex-shrink: 0;
@@ -134,7 +104,7 @@
 
 .dartNote {
   margin-top: 12px;
-  font-size: 12px;
+  font-size: $text-caption;
   color: $text-secondary;
 
   a {
@@ -154,7 +124,7 @@
 
 .noticePre {
   font-family: $font-sans;
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: $text-primary;
   line-height: 1.9;
   white-space: pre-wrap;
@@ -171,7 +141,7 @@
 }
 
 .viewAll {
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: $text-secondary;
   font-weight: 600;
   text-decoration: none;
@@ -204,7 +174,7 @@
 }
 
 .newsCategory {
-  font-size: 10px;
+  font-size: $text-caption;
   font-weight: 700;
   color: $text-secondary;
   letter-spacing: 0.08em;
@@ -212,7 +182,7 @@
 }
 
 .newsTitle {
-  font-size: 14px;
+  font-size: $text-body;
   font-weight: 700;
   color: $text-primary;
   line-height: 1.5;
@@ -223,7 +193,7 @@
 }
 
 .newsPreview {
-  font-size: 12px;
+  font-size: $text-caption;
   color: $text-secondary;
   line-height: 1.7;
   display: -webkit-box;
@@ -234,16 +204,12 @@
 }
 
 .newsDate {
-  font-size: 11px;
+  font-size: $text-caption;
   color: $text-secondary;
   margin-top: auto;
 }
 
 @media (max-width: 768px) {
-  .hero {
-    padding: 60px 24px;
-  }
-
   .container {
     padding: 0 24px;
   }

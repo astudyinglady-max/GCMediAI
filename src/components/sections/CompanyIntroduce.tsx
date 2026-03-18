@@ -14,16 +14,16 @@ import GoogleGeminiEffect from '../ui/GoogleGeminiEffect/GoogleGeminiEffect';
  *
  * 섹션 height: 350vh → 스크롤 여행 = 250vh
  *
- * Phase 1 (p 0.00 → 0.43): 라인 드로잉 — 화면 고정
- * Gap    (p 0.43 → 0.55): 라인 완성 후 대기 (~30vh, 약 2스크롤)
- * Phase 2 (p 0.55 → 0.79): Left 컬럼 순차 등장 — 화면 고정
- * Phase 3 (p 0.79 → 0.97): Right 컬럼 순차 등장 — 화면 고정
- * Phase 4 (p 0.97 → 1.00): 완성 상태 유지, 다음 섹션으로 이동
+ * Phase 1 (p 0.07 → 0.36): Left 컬럼 순차 등장
+ * Phase 2 (p 0.36 → 0.60): Right 컬럼 순차 등장
+ * Phase 3 (p 0.60 → 0.98): 라인 드로잉
+ * Phase 4 (p 0.97 → 1.00): 라인 완성 → BusinessSection 자동 스크롤
  */
 export default function CompanyIntroduce() {
   const sectionRef = useRef<HTMLElement>(null);
-  // 0.07에서 시작 → 진입 시 라인이 약 20% 그려진 상태 (빈 화면 방지)
-  const progress = useMotionValue(0.07);
+  const progress = useMotionValue(0);
+  // 자동 이동 중복 방지 플래그
+  const hasNavigated = useRef(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -32,10 +32,21 @@ export default function CompanyIntroduce() {
     const update = () => {
       const rect = section.getBoundingClientRect();
       const scrollable = section.offsetHeight - window.innerHeight;
-      // -rect.top = 섹션 내 스크롤된 거리 (0 ~ scrollable)
-      // 최솟값 0.07: 스크롤 전에도 라인이 약 20% 그려진 채 시작
-      const p = Math.min(Math.max(-rect.top / scrollable, 0.07), 1);
+      const p = Math.min(Math.max(-rect.top / scrollable, 0), 1);
       progress.set(p);
+
+      // Phase 4: 라인 완성 후 BusinessSection으로 자동 스크롤
+      if (p >= 0.97 && !hasNavigated.current) {
+        hasNavigated.current = true;
+        setTimeout(() => {
+          const next = section.nextElementSibling as HTMLElement | null;
+          next?.scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+      }
+      // 스크롤 업 시 리셋 (재진입 허용)
+      if (p < 0.85) {
+        hasNavigated.current = false;
+      }
     };
 
     window.addEventListener('scroll', update, { passive: true });
@@ -43,38 +54,38 @@ export default function CompanyIntroduce() {
     return () => window.removeEventListener('scroll', update);
   }, [progress]);
 
-  // ── Phase 1: 라인 드로잉 (각 라인 약간씩 늦게 시작) ──
-  const pl0 = useTransform(progress, [0, 0.35], [0, 1.05]);
-  const pl1 = useTransform(progress, [0.02, 0.37], [0, 1.05]);
-  const pl2 = useTransform(progress, [0.04, 0.39], [0, 1.05]);
-  const pl3 = useTransform(progress, [0.06, 0.41], [0, 1.05]);
-  const pl4 = useTransform(progress, [0.08, 0.43], [0, 1.05]);
+  // ── Phase 1: Left 컬럼 순차 등장 (p=0.07 부터) ──
+  const eyebrowOpacity = useTransform(progress, [0.07, 0.18], [0, 1]);
+  const eyebrowY = useTransform(progress, [0.07, 0.18], [24, 0]);
 
-  // ── 라인 opacity: 진입 시 페이드인 → 유지 → Phase 2 전환 시 페이드아웃 ──
-  const linesOpacity = useTransform(progress, [0.07, 0.18, 0.52, 0.67], [0, 1, 1, 0.08]);
+  const titleLine1Opacity = useTransform(progress, [0.13, 0.24], [0, 1]);
+  const titleLine1Y = useTransform(progress, [0.13, 0.24], [24, 0]);
 
-  // ── Phase 2: Left 컬럼 순차 등장 (p=0.55 부터) ──
-  const eyebrowOpacity = useTransform(progress, [0.55, 0.64], [0, 1]);
-  const eyebrowY = useTransform(progress, [0.55, 0.64], [24, 0]);
+  const titleLine2Opacity = useTransform(progress, [0.19, 0.30], [0, 1]);
+  const titleLine2Y = useTransform(progress, [0.19, 0.30], [24, 0]);
 
-  const titleLine1Opacity = useTransform(progress, [0.60, 0.69], [0, 1]);
-  const titleLine1Y = useTransform(progress, [0.60, 0.69], [24, 0]);
+  const titleLine3Opacity = useTransform(progress, [0.25, 0.36], [0, 1]);
+  const titleLine3Y = useTransform(progress, [0.25, 0.36], [24, 0]);
 
-  const titleLine2Opacity = useTransform(progress, [0.65, 0.74], [0, 1]);
-  const titleLine2Y = useTransform(progress, [0.65, 0.74], [24, 0]);
+  // ── Phase 2: Right 컬럼 순차 등장 (p=0.36 부터) ──
+  const subTitleOpacity = useTransform(progress, [0.36, 0.47], [0, 1]);
+  const subTitleY = useTransform(progress, [0.36, 0.47], [24, 0]);
 
-  const titleLine3Opacity = useTransform(progress, [0.70, 0.79], [0, 1]);
-  const titleLine3Y = useTransform(progress, [0.70, 0.79], [24, 0]);
+  const bodyOpacity = useTransform(progress, [0.42, 0.53], [0, 1]);
+  const bodyY = useTransform(progress, [0.42, 0.53], [24, 0]);
 
-  // ── Phase 3: Right 컬럼 순차 등장 (p=0.79 부터) ──
-  const subTitleOpacity = useTransform(progress, [0.79, 0.86], [0, 1]);
-  const subTitleY = useTransform(progress, [0.79, 0.86], [24, 0]);
+  const ctaOpacity = useTransform(progress, [0.50, 0.60], [0, 1]);
+  const ctaY = useTransform(progress, [0.50, 0.60], [16, 0]);
 
-  const bodyOpacity = useTransform(progress, [0.84, 0.91], [0, 1]);
-  const bodyY = useTransform(progress, [0.84, 0.91], [24, 0]);
+  // ── Phase 3: 라인 드로잉 (순차 시작, 각 0.02 지연) ──
+  const pl0 = useTransform(progress, [0.60, 0.90], [0, 1.05]);
+  const pl1 = useTransform(progress, [0.62, 0.92], [0, 1.05]);
+  const pl2 = useTransform(progress, [0.64, 0.94], [0, 1.05]);
+  const pl3 = useTransform(progress, [0.66, 0.96], [0, 1.05]);
+  const pl4 = useTransform(progress, [0.68, 0.98], [0, 1.05]);
 
-  const ctaOpacity = useTransform(progress, [0.90, 0.97], [0, 1]);
-  const ctaY = useTransform(progress, [0.90, 0.97], [16, 0]);
+  // 라인 opacity: 페이드인 → 유지
+  const linesOpacity = useTransform(progress, [0.60, 0.70, 1.0], [0, 1, 1]);
 
   return (
     <section ref={sectionRef} className={styles.section}>
@@ -84,8 +95,10 @@ export default function CompanyIntroduce() {
         <div className={styles.bgGlowOrange} aria-hidden="true" />
         <div className={styles.bgGlowBlue} aria-hidden="true" />
 
-        {/* 배경 라인 애니메이션 */}
-        <GoogleGeminiEffect pathLengths={[pl0, pl1, pl2, pl3, pl4]} opacity={linesOpacity} />
+        {/* 배경 라인 애니메이션 — translateY로 위치를 아래로 조정 */}
+        <div style={{ position: 'absolute', inset: 0, transform: 'translateY(15%)', pointerEvents: 'none' }}>
+          <GoogleGeminiEffect pathLengths={[pl0, pl1, pl2, pl3, pl4]} opacity={linesOpacity} />
+        </div>
 
         <div className={styles.inner}>
           {/* 왼쪽: 타이틀 */}

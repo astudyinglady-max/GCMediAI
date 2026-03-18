@@ -24,7 +24,7 @@
   border: 1.5px solid $border-default;
   border-radius: 8px;
   font-family: $font-sans;
-  font-size: 14px;
+  font-size: $text-body;
   color: $text-primary;
   cursor: pointer;
   transition: border-color 0.15s;
@@ -98,7 +98,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 14px;
-  font-size: 14px;
+  font-size: $text-body;
   color: $text-primary;
   cursor: pointer;
   transition: background 0.1s;

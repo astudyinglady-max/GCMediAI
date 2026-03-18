@@ -1,7 +1,7 @@
 @use '../../../styles/variables' as *;
 
 .footer {
-  background: #ede9e2;
+  background: $color-bg-warm;
   border-top: 1px solid $border-default;
   padding: 48px 0 32px;
 }
@@ -27,10 +27,14 @@
 }
 
 .logo {
-  font-size: 16px;
+  font-size: 0;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: $text-primary;
+  height: 30px;
+  width: 100px;
+  background: url('/images/GCMediAI_blue.png') no-repeat left 0;
+  background-size: contain;
 }
 
 .logoAccent {
@@ -38,7 +42,7 @@
 }
 
 .tagline {
-  font-size: 12px;
+  font-size: $text-caption;
   color: $text-secondary;
   letter-spacing: 0.04em;
 }
@@ -50,12 +54,12 @@
 }
 
 .familyLabel {
-  font-size: 11px;
+  font-size: $text-caption;
   color: $text-secondary;
 }
 
 .familyLink {
-  font-size: 12px;
+  font-size: $text-caption;
   color: $text-secondary;
   text-decoration: none;
   border: 1px solid $border-default;
@@ -86,7 +90,7 @@
 }
 
 .info {
-  font-size: 11px;
+  font-size: $text-caption;
   color: $text-secondary;
   line-height: 1.8;
   font-style: normal;
@@ -109,7 +113,7 @@
 }
 
 .privacyLink {
-  font-size: 12px;
+  font-size: $text-caption;
   color: $text-primary;
   font-weight: 600;
   text-decoration: underline;
@@ -117,7 +121,7 @@
 }
 
 .copyright {
-  font-size: 11px;
+  font-size: $text-caption;
   color: $text-secondary;
 }
 

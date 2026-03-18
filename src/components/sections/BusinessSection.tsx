@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, JSX } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { BUSINESS_AREAS } from '@/lib/data/business';
@@ -23,23 +23,23 @@ const DISPLAY_META: Record<
   { eyebrowSuffix: string; titleEn: string; bgClass: string }
 > = {
   uisarang: {
-    eyebrowSuffix: 'Cloud EMR',
-    titleEn: 'CLOUD EMR',
+    eyebrowSuffix: 'Medical Infra',
+    titleEn: 'MEDICAL INFRA',
     bgClass: styles.bgEmr,
   },
   dataMarketing: {
-    eyebrowSuffix: 'Pharmacy',
-    titleEn: 'PHARMACY',
+    eyebrowSuffix: 'Data & Marketing',
+    titleEn: 'DATA & MARKETING',
     bgClass: styles.bgAi,
   },
   platform: {
-    eyebrowSuffix: 'Data Analytics',
-    titleEn: 'DATA ANALYTICS',
+    eyebrowSuffix: 'Platform',
+    titleEn: 'PLATFORM',
     bgClass: styles.bgData,
   },
   distribution: {
-    eyebrowSuffix: 'Mobile Health',
-    titleEn: 'MOBILE HEALTH',
+    eyebrowSuffix: 'Distribution',
+    titleEn: 'DISTRIBUTION',
     bgClass: styles.bgMos,
   },
 };
@@ -135,13 +135,6 @@ export default function BusinessSection() {
   return (
     // 500vh: sticky 100vh + 스크롤 여행 400vh (사업 4개 × 100vh)
     <div ref={sectionRef} className={styles.section}>
-      {/* ── 티커 ── */}
-      <div className={styles.ticker} aria-hidden="true">
-        <div className={styles.tickerTrack}>
-          <span>{TICKER.repeat(6)}</span>
-          <span aria-hidden="true">{TICKER.repeat(6)}</span>
-        </div>
-      </div>
       <div className={styles.inner}>
         <div className={styles.sticky}>
           {/* ── 메인 콘텐츠: 카드 + 텍스트 ── */}
@@ -171,7 +164,7 @@ export default function BusinessSection() {
                   >
                     <div className={styles.cardOverlay} />
 
-                    {/* 카드 번호 */}
+                    {/* 카드 라벨: ● eyebrow */}
                     <span
                       className={[
                         styles.cardNum,
@@ -180,7 +173,8 @@ export default function BusinessSection() {
                         .filter(Boolean)
                         .join(' ')}
                     >
-                      {b.num}
+                      <span className={styles.cardDot}>●</span>
+                      {b.eyebrow}
                     </span>
 
                     {/* HERO일 때만 타이틀 표시 */}

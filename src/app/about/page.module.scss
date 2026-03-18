@@ -5,40 +5,6 @@
 }
 
 // ══════════════════════════════════════════
-//  히어로
-// ══════════════════════════════════════════
-
-.hero {
-  background: #f7f3ee;
-  padding: 80px 48px;
-  text-align: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  color: $text-secondary;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.heading {
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 900;
-  color: $text-primary;
-  letter-spacing: -0.04em;
-  margin-bottom: 16px;
-}
-
-.sub {
-  font-size: 16px;
-  color: $text-secondary;
-  line-height: 1.75;
-}
-
-// ══════════════════════════════════════════
 //  공통 컨테이너
 // ══════════════════════════════════════════
 
@@ -58,7 +24,7 @@
 }
 
 .sectionTitle {
-  font-size: 24px;
+  font-size: $text-h4;
   font-weight: 800;
   color: $text-primary;
   letter-spacing: -0.03em;
@@ -66,7 +32,7 @@
 }
 
 .para {
-  font-size: 15px;
+  font-size: $text-body;
   color: $text-secondary;
   line-height: 1.9;
   margin-bottom: 20px;
@@ -108,7 +74,7 @@
 }
 
 .statLabel {
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: $text-secondary;
 }
 
@@ -138,7 +104,7 @@
 }
 
 .historyEyebrow {
-  font-size: 11px;
+  font-size: $text-caption;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: $text-secondary;
@@ -147,7 +113,7 @@
 }
 
 .historyDesc {
-  font-size: 24px;
+  font-size: $text-h4;
   color: $text-secondary;
   line-height: 1.75;
   margin: 0 auto;
@@ -248,7 +214,7 @@
 }
 
 .milestoneYear {
-  font-size: 12px;
+  font-size: $text-caption;
   font-weight: 700;
   color: $text-primary;
   letter-spacing: 0.02em;
@@ -259,7 +225,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 11px;
+  font-size: $text-caption;
   color: $text-secondary;
   line-height: 1.4;
   text-align: center;
@@ -277,19 +243,460 @@
 }
 
 // ══════════════════════════════════════════
+//  서브탭 내비게이션
+// ══════════════════════════════════════════
+
+.aboutClient {
+  width: 100%;
+}
+
+// ══════════════════════════════════════════
+//  서브비주얼 이미지 스트립
+// ══════════════════════════════════════════
+
+.subVisual {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px;
+}
+
+.subVisualImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+
+// ── 탭 섹션 공통 ──
+
+.tabSection {
+  padding: 80px 0;
+}
+
+.tabSectionAlt {
+  background: #f7f3ee;
+}
+
+// ── 섹션 공통 텍스트 ──
+
+.sectionHeading {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  margin-bottom: 40px;
+  line-height: 1.25;
+}
+
+// ── GC메디아이 탭: 소개 2단 ──
+
+.introGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.introText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.introHeading {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.introImageWrap {
+  border-radius: $radius-xl;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: #f0ede8;
+  position: relative;
+}
+
+.introImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+// ── 연혁 탭 ──
+
+.historyTabHeader {
+  margin-bottom: 0;
+}
+
+.phaseTabRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.phaseTabBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  padding: 12px 20px;
+  background: #fff;
+  border: 1.5px solid $border-default;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition:
+    border-color $transition-base,
+    background $transition-base;
+
+  &:hover {
+    border-color: $color-secondary;
+  }
+}
+
+.phaseTabActive {
+  background: $color-secondary;
+  border-color: $color-secondary;
+
+  .phaseLabel,
+  .phaseRange {
+    color: #fff;
+  }
+}
+
+.phaseLabel {
+  font-size: $text-body;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.01em;
+  transition: color $transition-base;
+}
+
+.phaseRange {
+  font-size: $text-caption;
+  color: $text-secondary;
+  transition: color $transition-base;
+}
+
+// ── 오시는 길 탭 ──
+
+.mapWrap {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid $border-default;
+  flex: 1;
+}
+
+.locationLabel {
+  font-size: $text-caption;
+  font-weight: 700;
+  color: $text-secondary;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+// ══════════════════════════════════════════
+//  GC메디아이 소개 (pillars)
+// ══════════════════════════════════════════
+
+.pillars {
+  padding: 100px 0;
+  background: #f7f3ee;
+}
+
+.sectionEyebrow {
+  font-size: $text-caption;
+  font-weight: 700;
+  color: $color-primary;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.pillarList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid $border-default;
+}
+
+.pillarItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 48px 0;
+  border-bottom: 1px solid $border-default;
+  transition: background $transition-base;
+}
+
+.pillarNum {
+  font-size: $text-body-sm;
+  font-weight: 700;
+  color: $color-primary;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  width: 36px;
+  padding-top: 4px;
+}
+
+.pillarBody {
+  flex: 1;
+}
+
+.pillarTitle {
+  display: block;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+
+.pillarSubtitle {
+  font-size: $text-body;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 14px;
+}
+
+.pillarDesc {
+  font-size: $text-body;
+  color: $text-secondary;
+  line-height: 1.85;
+  max-width: 720px;
+}
+
+// ══════════════════════════════════════════
+//  연혁 상세 리스트
+// ══════════════════════════════════════════
+
+.historyList {
+  list-style: none;
+  margin: 64px 0 0;
+  padding: 0;
+  border-top: 1px solid $border-default;
+}
+
+.historyListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.historyListYear {
+  font-size: $text-body;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  width: 52px;
+  padding-top: 2px;
+}
+
+.historyEvents {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.historyEvent {
+  font-size: $text-body;
+  color: $text-secondary;
+  line-height: 1.7;
+  padding-left: 16px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 4px;
+    height: 1px;
+    background: $color-primary;
+  }
+}
+
+// ══════════════════════════════════════════
+//  가족사·관계사
+// ══════════════════════════════════════════
+
+.family {
+  background: #f7f3ee;
+  padding: 100px 0;
+}
+
+.familyDesc {
+  font-size: $text-body;
+  color: $text-secondary;
+  line-height: 1.85;
+  margin-bottom: 48px;
+  max-width: 480px;
+}
+
+.familyGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.familyCard {
+  background: #ffffff;
+  border: 1px solid $border-default;
+  border-radius: $radius-lg;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition:
+    box-shadow $transition-base,
+    transform $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.familyCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.familyName {
+  font-size: $text-body;
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+}
+
+.familyCategory {
+  font-size: $text-caption;
+  font-weight: 600;
+  color: $color-secondary;
+  letter-spacing: 0.04em;
+  background: rgba(28, 47, 85, 0.08);
+  padding: 4px 8px;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.familyCardDesc {
+  font-size: $text-body-sm;
+  color: $text-secondary;
+  line-height: 1.75;
+}
+
+// ══════════════════════════════════════════
+//  오시는 길
+// ══════════════════════════════════════════
+
+.location {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+.locationInfo {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 40px;
+}
+
+.locationDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.locationAddress {
+  font-size: $text-body;
+  color: $text-secondary;
+  line-height: 1.75;
+}
+
+.locationPhone {
+  font-size: $text-body;
+  color: $text-secondary;
+}
+
+.mapPlaceholder {
+  height: 360px;
+  background: #f0ede8;
+  border-radius: $radius-lg;
+  border: 1px solid $border-default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: $text-body-sm;
+    color: $text-disabled;
+    letter-spacing: 0.05em;
+  }
+}
+
+// ══════════════════════════════════════════
 //  반응형
 // ══════════════════════════════════════════
 
 @media (max-width: 768px) {
+  .subVisual {
+    height: 220px;
+  }
+
   .main {
     padding-top: 62px;
-  }
-  .hero {
-    padding: 60px 24px;
   }
 
   .container {
     padding: 0 24px;
+  }
+
+  .tabSection {
+    padding: 56px 0;
+  }
+
+  .introGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .introImageWrap {
+    order: -1;
+  }
+
+  .phaseTabRow {
+    gap: 8px;
+  }
+
+  .phaseTabBtn {
+    padding: 10px 16px;
   }
 
   .statGrid {
@@ -323,5 +730,47 @@
     &:not(:first-child):not(:last-child) {
       display: none;
     }
+  }
+
+  .historyListItem {
+    gap: 24px;
+  }
+
+  .historyListYear {
+    width: 44px;
+  }
+
+  .pillars {
+    padding: 64px 0;
+  }
+
+  .pillarItem {
+    gap: 20px;
+    padding: 32px 0;
+  }
+
+  .pillarNum {
+    width: 28px;
+  }
+
+  .familyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location {
+    padding: 64px 0;
+  }
+
+  .locationInfo {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .mapPlaceholder {
+    height: 240px;
+  }
+
+  .family {
+    padding: 64px 0;
   }
 }

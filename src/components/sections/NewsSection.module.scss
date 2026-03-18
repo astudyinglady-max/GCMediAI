@@ -6,7 +6,7 @@
 
 .section {
   position: relative;
-  background: #060c1a;
+  background: $color-dark-news;
   padding: 100px 0 80px;
   overflow: hidden;
 }
@@ -58,16 +58,16 @@
 .heading {
   font-size: clamp(44px, 6vw, 80px);
   font-weight: 900;
-  color: #ffffff;
+  color: $text-inverse;
   letter-spacing: -0.05em;
   line-height: 1;
   margin-bottom: 16px;
 }
 
 .subheading {
-  font-size: 14px;
+  font-size: $text-body;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.55);
   letter-spacing: 0.06em;
 }
 
@@ -146,7 +146,7 @@
 
   &:hover {
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.32);
-    background: #ffffff;
+    background: $color-surface;
 
     &::before {
       transform: scaleX(1);
@@ -169,7 +169,7 @@
 }
 
 .cardCategory {
-  font-size: 10px;
+  font-size: $text-caption;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -180,13 +180,13 @@
 }
 
 .cardDate {
-  font-size: 11px;
+  font-size: $text-caption;
   color: rgba(17, 17, 17, 0.35);
   font-variant-numeric: tabular-nums;
 }
 
 .cardTitle {
-  font-size: 17px;
+  font-size: $text-body-lg;
   font-weight: 800;
   color: $text-primary;
   line-height: 1.4;
@@ -200,7 +200,7 @@
 }
 
 .cardPreview {
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: $text-secondary;
   line-height: 1.65;
   // 2줄 클램프
@@ -214,13 +214,13 @@
 .cardArrow {
   display: block;
   margin-top: 20px;
-  font-size: 20px;
+  font-size: $text-h5;
   color: $text-primary;
   opacity: 0.3;
   transform: translateX(-4px);
   transition:
-    opacity 250ms ease,
-    transform 250ms ease;
+    opacity $transition-ui,
+    transform $transition-ui;
 }
 
 // ══════════════════════════════════════════
@@ -242,10 +242,10 @@
   padding: 14px 36px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 9999px;
-  font-size: 13px;
+  font-size: $text-body-sm;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #ffffff;
+  color: $text-inverse;
   text-decoration: none;
   backdrop-filter: blur(8px);
   background: rgba(255, 255, 255, 0.06);

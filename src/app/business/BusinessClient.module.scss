@@ -1,0 +1,276 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  width: 100%;
+}
+
+// ─────────────────────────────────────────────
+// 탭 콘텐츠
+// ─────────────────────────────────────────────
+
+.tabContent {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+// ─────────────────────────────────────────────
+// 사업 영역 헤더
+// ─────────────────────────────────────────────
+
+.areaSection {
+  padding: 64px 0 80px;
+}
+
+.areaHeader {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.areaName {
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 22px;
+    background: $color-secondary;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+}
+
+.areaDesc {
+  font-size: $text-body;
+  color: $text-secondary;
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+// ─────────────────────────────────────────────
+// 통계 행
+// ─────────────────────────────────────────────
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: #f7f3ee;
+  border-radius: $radius-lg;
+  margin-bottom: 48px;
+  overflow: hidden;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 28px 32px;
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.statValue {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  color: $color-secondary;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: $text-caption;
+  color: $text-secondary;
+  line-height: 1.5;
+}
+
+// ─────────────────────────────────────────────
+// 서비스 블록 목록
+// ─────────────────────────────────────────────
+
+.serviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.serviceBlock {
+  padding: 40px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.serviceBlockHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.serviceTag {
+  font-size: $text-caption;
+  font-weight: 700;
+  color: $color-secondary;
+  background: rgba(28, 47, 85, 0.08);
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  letter-spacing: 0.04em;
+}
+
+.serviceBadge {
+  font-size: $text-caption;
+  font-weight: 600;
+  color: $color-primary;
+  background: rgba(241, 60, 5, 0.08);
+  padding: 4px 10px;
+  border-radius: $radius-full;
+  letter-spacing: 0.02em;
+}
+
+.serviceBlockBody {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+.serviceBlockLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serviceName {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.serviceSlogan {
+  font-size: $text-body;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-bottom: 4px;
+}
+
+.serviceDesc {
+  font-size: $text-body;
+  color: $text-secondary;
+  line-height: 1.85;
+  max-width: 580px;
+}
+
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: $text-body-sm;
+  font-weight: 700;
+  color: $color-secondary;
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+  width: fit-content;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.serviceLinkDisabled {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 8px;
+  font-size: $text-body-sm;
+  font-weight: 600;
+  color: $text-disabled;
+  cursor: default;
+}
+
+// ─────────────────────────────────────────────
+// 기능 리스트
+// ─────────────────────────────────────────────
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 20px 24px;
+  background: #f7f3ee;
+  border-radius: $radius-lg;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+.featureItem {
+  font-size: $text-body-sm;
+  color: $text-secondary;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.6;
+
+  &::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: $color-secondary;
+    font-weight: 700;
+  }
+}
+
+// ─────────────────────────────────────────────
+// 반응형
+// ─────────────────────────────────────────────
+
+@media (max-width: 768px) {
+  .tabContent {
+    padding: 0 20px;
+  }
+
+  .areaSection {
+    padding: 48px 0 64px;
+  }
+
+  .statsRow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .statItem {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .serviceBlockBody {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .featureList {
+    order: -1;
+  }
+}

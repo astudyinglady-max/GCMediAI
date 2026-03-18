@@ -20,7 +20,7 @@
 // ══════════════════════════════════════════
 
 .section {
-  background: #ffffff;
+  background: $color-background;
 }
 
 .inner {
@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: #ffffff;
+  background: $color-background;
 }
 
 // ── 섹션 헤더 ──
@@ -56,7 +56,7 @@
 }
 
 .headerEyebrow {
-  font-size: 11px;
+  font-size: $text-caption;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -71,7 +71,7 @@
 }
 
 .headerLink {
-  font-size: 13px;
+  font-size: $text-body-sm;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: rgba(17, 17, 17, 0.35);
@@ -144,12 +144,6 @@
 .cardOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.15) 45%,
-    transparent 75%
-  );
   pointer-events: none;
   z-index: 1;
 }
@@ -160,15 +154,22 @@
   top: 16px;
   left: 18px;
   z-index: 3;
-  font-size: 11px;
+  font-size: $text-caption;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.45);
 }
 
+// 라벨 앞 ● 점
+.cardDot {
+  margin-right: 5px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+
 // HERO 카드의 번호: 더 크고 밝게
 .cardNumHero {
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: rgba(255, 255, 255, 0.75);
 }
 
@@ -185,7 +186,7 @@
   flex-direction: column;
   font-size: clamp(32px, 3.8vw, 56px);
   font-weight: 900;
-  color: #ffffff;
+  color: $text-inverse;
   line-height: 1.04;
   letter-spacing: -0.04em;
 }
@@ -214,7 +215,7 @@
 }
 
 .textCounter {
-  font-size: 12px;
+  font-size: $text-caption;
   font-weight: 400;
   letter-spacing: 0.06em;
   color: rgba(17, 17, 17, 0.35);
@@ -226,7 +227,7 @@
 }
 
 .textEyebrow {
-  font-size: 11px;
+  font-size: $text-caption;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -249,10 +250,9 @@
 }
 
 .textDesc {
-  font-size: 15px;
+  font-size: $text-body;
   color: $text-secondary;
   line-height: 1.75;
-  max-width: 320px;
   margin-top: 4px;
 }
 
@@ -261,7 +261,7 @@
   align-items: center;
   gap: 8px;
   margin-top: 20px;
-  font-size: 14px;
+  font-size: $text-body;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: $text-primary;
@@ -278,7 +278,7 @@
 }
 
 .ctaArrow {
-  font-size: 16px;
+  font-size: $text-body;
   transition: color $transition-base;
 }
 
@@ -312,28 +312,64 @@
 //  카드 배경 — 사업별 고유 그라디언트
 // ══════════════════════════════════════════
 
-.bgAi {
+.bgEmr {
+  // 짙은 브라운-블랙 (의사랑)
   background:
-    radial-gradient(ellipse at 65% 25%, #1a3a70 0%, transparent 55%),
-    linear-gradient(160deg, #071628 0%, #0e2a52 60%, #071020 100%);
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(80, 30, 10, 0.8) 0%,
+      transparent 60%
+    ),
+    linear-gradient(160deg, #140a04 0%, #2a1008 60%, #0e0602 100%);
+}
+
+.bgAi {
+  // 밝은 시안/일렉트릭 블루 (데이터마케팅)
+  background:
+    radial-gradient(
+      ellipse at 70% 20%,
+      rgba(0, 200, 230, 0.45) 0%,
+      transparent 55%
+    ),
+    linear-gradient(160deg, #005f90 0%, #0090c0 50%, #004070 100%);
 }
 
 .bgData {
+  // 중간 블루-퍼플 인디고 (플랫폼)
   background:
-    radial-gradient(ellipse at 65% 25%, #1a4a20 0%, transparent 55%),
-    linear-gradient(160deg, #071408 0%, #0e3012 60%, #050e05 100%);
-}
-
-.bgEmr {
-  background:
-    radial-gradient(ellipse at 65% 25%, #6a2400 0%, transparent 55%),
-    linear-gradient(160deg, #1a0800 0%, #4a1800 60%, #0e0400 100%);
+    radial-gradient(
+      ellipse at 60% 25%,
+      rgba(80, 80, 220, 0.5) 0%,
+      transparent 55%
+    ),
+    linear-gradient(160deg, #1a2080 0%, #2d3cb0 55%, #111860 100%);
 }
 
 .bgMos {
+  // 짙은 네이비 (유통)
   background:
-    radial-gradient(ellipse at 65% 25%, #3a0090 0%, transparent 55%),
-    linear-gradient(160deg, #0a0020 0%, #28006a 60%, #080015 100%);
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(20, 50, 100, 0.7) 0%,
+      transparent 55%
+    ),
+    linear-gradient(160deg, #050d1e 0%, #0d1e3a 60%, #030810 100%);
+}
+
+// 카드 우상단 일러스트 컨테이너
+.cardIllust {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 65%;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: hidden;
+  opacity: 0.75;
 }
 
 // ══════════════════════════════════════════

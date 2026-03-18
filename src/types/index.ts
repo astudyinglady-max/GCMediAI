@@ -20,16 +20,35 @@ export type Disclosure = {
   dartUrl: string;
 };
 
+export type BusinessStat = {
+  value: string;
+  label: string;
+};
+
 export type Service = {
   name: string;
+  slogan?: string;
   description: string;
   features: string[];
   url: string;
+  tag?: string;
+  badge?: string;
 };
 
 export type BusinessArea = {
   id: string;
   name: string;
+  tabLabel: string;
   description: string;
+  stats?: BusinessStat[];
   services: Service[];
+};
+
+export type FinancialRow = {
+  label: string;
+  values: number[]; // 연도 순서와 동일
+  isTotal?: boolean;
+  isSubTotal?: boolean;
+  indent?: boolean;
+  isNegative?: boolean; // 음수 강조 허용
 };

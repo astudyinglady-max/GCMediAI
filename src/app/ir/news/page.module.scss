@@ -12,7 +12,7 @@
 }
 
 .eyebrow {
-  font-size: 11px;
+  font-size: $text-caption;
   font-weight: 700;
   color: $text-secondary;
   letter-spacing: 0.18em;
@@ -29,13 +29,13 @@
 }
 
 .sub {
-  font-size: 16px;
+  font-size: $text-body;
   color: $text-secondary;
   line-height: 1.75;
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 60px 48px;
 }
@@ -54,7 +54,9 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   text-decoration: none;
-  transition: box-shadow 0.15s, border-color 0.15s;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s;
 
   &:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -63,7 +65,7 @@
 }
 
 .newsCategory {
-  font-size: 10px;
+  font-size: $text-caption;
   font-weight: 700;
   color: $text-secondary;
   letter-spacing: 0.08em;
@@ -71,21 +73,21 @@
 }
 
 .newsTitle {
-  font-size: 16px;
+  font-size: $text-body;
   font-weight: 700;
   color: $text-primary;
   line-height: 1.5;
 }
 
 .newsPreview {
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: $text-secondary;
   line-height: 1.75;
   flex: 1;
 }
 
 .newsDate {
-  font-size: 12px;
+  font-size: $text-caption;
   color: $text-secondary;
   margin-top: auto;
 }

@@ -1,11 +1,12 @@
 @use '../../../styles/variables' as *;
+@use 'sass:color';
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: $z-sticky;
   background: transparent;
   transition:
     background 0.2s,
@@ -13,30 +14,36 @@
 }
 
 .headerScrolled {
-  background:rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 .headerTransparent {
   background: transparent;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
-  .logo{
+
+  .logo {
     background-image: url('/images/GCMediAI_white.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left center;
   }
+
   .gnbLink {
-    color: #fff;
-  }
-  .hamburger{
-    span{
-      background: #fff;
+    color: rgba(255, 255, 255, 0.85);
+
+    &:hover {
+      color: $text-inverse;
     }
   }
-  .drawer{
+
+  .hamburger span {
+    background: $text-inverse;
+  }
+
+  .drawer {
     border-color: #191919;
-    background-color:#111111;
+    background-color: #111111;
   }
 }
 
@@ -51,36 +58,57 @@
 
 .logo {
   display: block;
-  width: 140px;
-  height: 30px;
+  width: 160px;
+  height: 50px;
   font-size: 0;
-  letter-spacing: -0.02em;
   color: transparent;
   text-decoration: none;
   background-image: url('/images/GCMediAI_blue.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left center;
+  flex-shrink: 0;
 }
 
 .logoAccent {
   color: $color-primary;
 }
 
+// ── 데스크톱 GNB ──
+
 .gnb {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 4px;
+}
+
+// GNB 아이템 래퍼 — 드롭다운의 position 기준
+// padding-bottom으로 갭 영역 확보 → mouseLeave 오발 방지
+.gnbItem {
+  position: relative;
+  padding-bottom: 8px;
+  margin-bottom: -8px;
+  &:last-of-type {
+    margin-right: 48px;
+  }
 }
 
 .gnbLink {
-  font-size: 13px;
+  display: block;
+  padding: 8px 16px;
+  font-size: $text-body;
+  font-weight: 500;
   color: $text-secondary;
   text-decoration: none;
-  transition: color 0.15s;
+  border-radius: $radius-xs;
+  transition:
+    color 0.15s,
+    background 0.15s;
+  white-space: nowrap;
 
   &:hover {
     color: $text-primary;
+    background: rgba(17, 17, 17, 0.05);
   }
 }
 
@@ -89,19 +117,76 @@
   font-weight: 600;
 }
 
-.cta {
-  background: $color-primary;
-  color: #fff;
-  border-radius: 7px;
-  padding: 8px 18px;
-  font-size: 13px;
+// ── 드롭다운 패널 ──
+
+.dropdown {
+  z-index: 200;
+  position: absolute;
+  top: 100%; /* padding-bottom 8px이 이미 시각적 간격(브릿지)을 제공 */
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 140px;
+  background: $color-surface;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 10px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  // 기본 숨김
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-6px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.dropdownVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdownLink {
+  display: block;
+  padding: 9px 14px;
+  font-size: $text-body-sm;
+  font-weight: 400;
+  color: $text-secondary;
+  text-decoration: none;
+  border-radius: $radius-xs;
+  white-space: nowrap;
+  transition:
+    color 0.12s,
+    background 0.12s;
+
+  &:hover {
+    color: $color-primary;
+    background: rgba(241, 60, 5, 0.05);
+  }
+}
+
+// ── CTA 버튼 (문의하기 링크) ──
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 20px;
+  background: $color-secondary;
+  color: $text-inverse;
+  border-radius: 8px;
+  font-size: $text-body;
   font-weight: 700;
   text-decoration: none;
+  white-space: nowrap;
   transition: background 0.15s;
 
   &:hover {
-    background: $color-primary-dark;
-    color: #fff;
+    background: color.adjust($color-secondary, $lightness: -8%);
   }
 }
 
@@ -131,36 +216,83 @@
 .drawer {
   display: none;
   flex-direction: column;
-  gap: 0;
-  background:rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
   border-top: 1px solid $border-default;
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.25s ease;
-
-  .gnbLink,
-  .cta {
-    display: block;
-    padding: 14px 24px;
-    font-size: 15px;
-    border-bottom: 1px solid $border-default;
-    text-decoration: none;
-  }
-
-  .cta {
-    background: none;
-    color: $color-primary;
-    border-radius: 0;
-    font-weight: 700;
-  }
-  .drawerCta{
-    padding:12px;
-    margin:16px 24px;
-  }
+  transition: max-height 0.3s ease;
 }
 
 .drawerOpen {
-  max-height: 400px;
+  max-height: 600px;
+}
+
+// 드로어 1depth 아이템
+.drawerSection {
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.drawerParent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 24px;
+  font-size: $text-body;
+  font-weight: 500;
+  color: $text-primary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.drawerArrow {
+  font-size: $text-body-lg;
+  color: $text-secondary;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+
+.drawerArrowOpen {
+  transform: rotate(90deg);
+}
+
+// 드로어 2depth
+.drawerSub {
+  background: rgba(17, 17, 17, 0.02);
+  padding: 4px 0 8px;
+}
+
+.drawerSubLink {
+  display: block;
+  padding: 10px 24px 10px 36px;
+  font-size: $text-body;
+  color: $text-secondary;
+  text-decoration: none;
+  transition: color 0.12s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.drawerCta {
+  margin: 16px 24px;
+  padding: 12px;
+  background: $color-primary;
+  color: $text-inverse;
+  border: none;
+  border-radius: 8px;
+  font-size: $text-body;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
 }
 
 // ── 반응형 ──

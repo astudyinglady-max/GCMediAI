@@ -13,7 +13,7 @@
 
 .back {
   display: inline-block;
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: $text-secondary;
   text-decoration: none;
   margin-bottom: 32px;
@@ -39,7 +39,7 @@
 }
 
 .category {
-  font-size: 11px;
+  font-size: $text-caption;
   font-weight: 700;
   color: $text-secondary;
   letter-spacing: 0.12em;
@@ -55,7 +55,7 @@
 }
 
 .date {
-  font-size: 13px;
+  font-size: $text-body-sm;
   color: $text-secondary;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .para {
-  font-size: 15px;
+  font-size: $text-body;
   color: $text-primary;
   line-height: 1.9;
   word-break: keep-all;

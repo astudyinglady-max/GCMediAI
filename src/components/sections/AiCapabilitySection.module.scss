@@ -1,0 +1,135 @@
+@use '../../styles/variables' as *;
+
+// ══════════════════════════════════════════
+//  AiCapabilitySection — OUR AI CAPABILITY
+//  흰 배경 + 4개 수치 카드
+// ══════════════════════════════════════════
+
+.section {
+  background: $color-surface;
+  padding: 96px 0 100px;
+  border-top: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.inner {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding-desktop;
+}
+
+// ── 섹션 헤더 ──
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 900;
+  color: $text-primary;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.desc {
+  font-size: $text-body;
+  color: $text-secondary;
+  line-height: 1.75;
+  text-align: right;
+  margin: 0;
+}
+
+// ── 수치 카드 그리드 ──
+
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 36px 32px;
+  background: $color-background;
+  border-radius: $radius-xl;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  transition: box-shadow 250ms ease, border-color 250ms ease;
+
+  &:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+    border-color: rgba(241, 60, 5, 0.15);
+  }
+}
+
+.figure {
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 900;
+  color: $color-primary;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.labelLine {
+  display: block;
+  font-size: $text-body;
+  font-weight: 500;
+  color: $text-secondary;
+  line-height: 1.5;
+}
+
+// ── 반응형 ──
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .desc {
+    text-align: left;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .section {
+    padding: 64px 0 72px;
+  }
+
+  .inner {
+    padding: 0 $container-padding-mobile;
+  }
+
+  .header {
+    margin-bottom: 36px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card {
+    padding: 24px 20px;
+    gap: 10px;
+  }
+}

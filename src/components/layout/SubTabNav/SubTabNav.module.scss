@@ -1,0 +1,59 @@
+@use '../../../styles/variables' as *;
+
+.tabNav {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  position: sticky;
+  top: 72px;
+  z-index: $z-sticky - 10;
+}
+
+.inner {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 48px;
+  gap: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabBtn {
+  width: 100%;
+  padding: 20px 20px;
+  font-size: $text-body;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.45);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition:
+    color $transition-base,
+    border-color $transition-base;
+  white-space: nowrap;
+  margin-bottom: -1px;
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.tabActive {
+  color: $color-secondary;
+  border-bottom-color: $color-secondary;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 0 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabBtn {
+    padding: 12px 14px;
+    font-size: $text-body-sm;
+    white-space: nowrap;
+  }
+}
